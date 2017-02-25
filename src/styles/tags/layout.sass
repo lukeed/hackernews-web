@@ -2,8 +2,25 @@
  * App Layout
  */
 
+$side-width: 40 * $base-unit
+$side-width-gap: 7 * $base-unit
+
 #app
 	@extend %fullscreen
+	&.overlay
+		background: green
 
-#content
-	padding-top: $header-height
+#side
+	position: absolute
+	will-change: transform
+	transform: translateX(-100%)
+	width: calc(100vw - #{$side-width-gap})
+	transition: all $base-timing ease-in-out
+	@extend %md-shadow--2
+	max-width: $side-width
+	height: 100vh
+	left: 0
+	top: 0
+
+// #content
+// 	padding-top: $header-height

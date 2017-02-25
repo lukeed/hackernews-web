@@ -3068,6 +3068,10 @@ md-colors@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/md-colors/-/md-colors-1.0.0.tgz#1e6bec52f66cb25c09241317d9d56a3543c987e8"
 
+md-shadows@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/md-shadows/-/md-shadows-1.0.0.tgz#f47c8f9cf81cd128f3195420a0880541b2eb0eb4"
+
 media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
