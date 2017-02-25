@@ -1,24 +1,17 @@
 import { h } from 'preact'
 import { Router } from 'preact-router';
-
-import Home from './pages/home';
+import Sidebar from './tags/sidebar';
 import Layout from './tags/layout';
-import Article from './pages/article';
-import Error404 from './pages/errors/404';
-import Credit from './pages/credit';
-import Blog from './pages/blog';
+import * as pages from './pages';
 
 // track pages on route change
 const onChange = obj => window.ga && ga('send', 'pageview', obj.url);
 
 export default (
-	<Layout>
+	<Layout nav={ <Sidebar /> }>
 		<Router onChange={ onChange }>
-			<Home path="/" />
-			<Blog path="/blog" />
-			<Article path="/blog/:title" />
-			<Credit path="/credit" />
-			<Error404 default />
+			<pages.index path="/" />
+			<pages.error default />
 		</Router>
 	</Layout>
 );

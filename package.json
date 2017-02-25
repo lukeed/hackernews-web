@@ -1,7 +1,6 @@
 {
   "private": true,
-  "name": "preact-starter",
-  "version": "1.1.1",
+  "version": "0.0.0",
   "license": "MIT",
   "repository": "lukeed/preact-starter",
   "author": {
@@ -17,7 +16,8 @@
   "dependencies": {
     "md-colors": "^1.0.0",
     "preact": "^7.2.0",
-    "preact-router": "^2.4.1"
+    "preact-router": "^2.4.1",
+    "preact-scroll-header": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

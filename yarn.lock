@@ -3903,6 +3903,10 @@ preact-router@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/preact-router/-/preact-router-2.4.1.tgz#2dbf1756724eb2b0c401678c6cee5af2e7a2ccb8"
 
+preact-scroll-header@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/preact-scroll-header/-/preact-scroll-header-1.0.0.tgz#c7cad1909ad3413e5cefbf615e3fa8829207f77a"
+
 preact@^7.2.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/preact/-/preact-7.2.0.tgz#8aacc97465a65509bc556604a7750d48e2fa7ad1"
