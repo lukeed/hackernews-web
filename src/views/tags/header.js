@@ -1,3 +1,5 @@
 import { h } from 'preact';
 
-export default () => <header>head</header>
+const click = () => console.log('clicked head');
+
+export default () => <header onClick={ click }>head</header>

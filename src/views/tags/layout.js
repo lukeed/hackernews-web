@@ -20,13 +20,15 @@ export default class extends Component {
 		const bool = state.isDevice;
 
 		const content = [
-			<Header mobile={ bool } />,
-			<main id="content">{ props.children }</main>
+
 		];
 
+				// { bool ? <Sidebar children={ content } /> : content }
 		return (
 			<div id="app">
-				{ bool ? <Sidebar children={ content } /> : content }
+				<Header mobile={ bool } />
+				<main id="content">{ props.children }</main>
+				{ bool && <Sidebar /> }
 			</div>
 		);
 	}

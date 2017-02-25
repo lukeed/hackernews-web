@@ -16,14 +16,8 @@ export default class extends Component {
 		off('click touch', this.onClick);
 	}
 
-	render(props, state) {
-		console.log('sidebar render', props.children);
-
-		return (
-			<div>
-				<aside>sidebar</aside>
-				{ props.children }
-			</div>
-		);
+	render(_, state) {
+		console.log('sidebar render');
+		return <aside>sidebar</aside>
 	}
 }
