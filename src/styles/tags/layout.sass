@@ -7,20 +7,34 @@ $side-width-gap: 7 * $base-unit
 
 #app
 	@extend %fullscreen
-	&.overlay
-		background: green
+	// "overlay"
+	&::after
+		@extend %fullscreen
+		position: absolute
+		transition: opacity $base-timing ease-in-out 100ms
+		background: rgba($black,0.35)
+		content: ''
+		z-index: -1
+		opacity: 0
+		top: 0
+	&.overlay::after
+		opacity: 1
 
 #side
 	position: absolute
 	will-change: transform
 	transform: translateX(-100%)
+	background-color: $white
 	width: calc(100vw - #{$side-width-gap})
 	transition: all $base-timing ease-in-out
-	@extend %md-shadow--2
 	max-width: $side-width
 	height: 100vh
+	z-index: 10
 	left: 0
 	top: 0
+	&.active
+		@extend %md-shadow--2
+		transform: translateX(0%)
 
 // #content
 // 	padding-top: $header-height

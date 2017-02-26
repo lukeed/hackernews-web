@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import Header from 'preact-scroll-header';
+import { on, off } from '../share';
 import Sidebar from './sidebar';
-import { on } from '../share';
 
 const check = () => window.innerWidth <= 481;
 
@@ -11,7 +11,15 @@ export default class extends Component {
 		isDevice: check()
 	}
 
-	toggle = () => this.setState({ doOpen: !this.state.doOpen })
+	open = e => {
+		e.stopPropagation(); // prevent instant close()
+		this.setState({ doOpen: true });
+	}
+
+	close = e => {
+		if (e.target.id === 'side') return;
+		this.setState({ doOpen: false });
+	}
 
 	componentDidMount() {
 		on('resize', () => this.setState({ isDevice: check() }));
@@ -22,17 +30,35 @@ export default class extends Component {
 		return state.isDevice !== now.isDevice || state.doOpen !== now.doOpen;
 	}
 
+	componentWillUpdate(props, state) {
+		// update `isOpen`
+		props.isOpen = state.isDevice && state.doOpen;
+		// attach/detach handler
+		(props.isOpen ? on : off)('click touch', this.close);
+	}
+
+	// componentDidUpdate(props) {
+	// 	// console.log(props.isOpen ? 'on' : 'off');
+	// 	// (props.isOpen ? on : off).call(null, 'click touch', this.close);
+	// 	if (props.isOpen) {
+	// 		console.log('i am open');
+	// 		on('click touch', this.close);
+	// 	} else {
+	// 		console.log('i am closed');
+	// 		off('click touch', this.close);
+	// 	}
+	// }
+
 	render(props, { isDevice, doOpen }) {
-		const isOpen = isDevice && doOpen;
-		console.error('LAYOUT RENDER', doOpen);
 		return (
-			<div id="app" className={{ overlay: isOpen }}>
+			<div id="app" className={{ overlay: props.isOpen }}>
 				<Header id="top">
-					{ isDevice && <button onClick={ this.toggle }>TOGGLE</button> }
+					{ isDevice && <button onClick={ this.open }>TOGGLE</button> }
 				</Header>
 
 				<main id="content">{ props.children }</main>
-				{ isDevice && <Sidebar active={ isOpen } /> }
+
+				{ isDevice && <Sidebar active={ props.isOpen } /> }
 			</div>
 		);
 	}
