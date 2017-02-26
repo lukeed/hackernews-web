@@ -37,18 +37,6 @@ export default class extends Component {
 		(props.isOpen ? on : off)('click touch', this.close);
 	}
 
-	// componentDidUpdate(props) {
-	// 	// console.log(props.isOpen ? 'on' : 'off');
-	// 	// (props.isOpen ? on : off).call(null, 'click touch', this.close);
-	// 	if (props.isOpen) {
-	// 		console.log('i am open');
-	// 		on('click touch', this.close);
-	// 	} else {
-	// 		console.log('i am closed');
-	// 		off('click touch', this.close);
-	// 	}
-	// }
-
 	render(props, { isDevice, doOpen }) {
 		return (
 			<div id="app" className={{ overlay: props.isOpen }}>

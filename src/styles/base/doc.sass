@@ -10,9 +10,12 @@
 body
 	color: $black
 	background: $offwhite
-	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif
-	@extend %fullscreen
 	font-weight: 400
+	font-size: $font-size
+	font-family: $font-family
+	-webkit-tap-highlight-color: transparent
+	-webkit-touch-callout: none
+	@extend %fullscreen
 	+font-smoothing()
 
 a
