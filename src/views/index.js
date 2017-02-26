@@ -9,7 +9,8 @@ const onChange = obj => window.ga && ga('send', 'pageview', obj.url);
 export default (
 	<Layout>
 		<Router onChange={ onChange }>
-			<pages.index path="/" />
+			<pages.index path="/" feed="top" />
+			<pages.index path="/:feed" />
 			<pages.error default />
 		</Router>
 	</Layout>

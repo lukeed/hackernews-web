@@ -2,6 +2,7 @@ import { h, Component } from 'preact';
 import Header from 'preact-scroll-header';
 import { on, off } from '../share';
 import Sidebar from './sidebar';
+import Menu from './menu';
 
 const check = () => window.innerWidth <= 481;
 
@@ -17,6 +18,7 @@ export default class extends Component {
 	}
 
 	close = e => {
+		console.log('here', e.target);
 		if (e.target.id === 'side') return;
 		this.setState({ doOpen: false });
 	}
@@ -41,7 +43,10 @@ export default class extends Component {
 		return (
 			<div id="app" className={{ overlay: props.isOpen }}>
 				<Header id="top">
-					{ isDevice && <button onClick={ this.open }>TOGGLE</button> }
+					{ isDevice
+						? <button onClick={ this.open }>TOGGLE</button>
+						: <Menu />
+					}
 				</Header>
 
 				<main id="content">{ props.children }</main>
