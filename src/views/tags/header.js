@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import Header from 'preact-scroll-header';
 
 const Item = props => (
 	<li className={{ active: location.pathname === props.path }}>
@@ -15,5 +16,7 @@ const links = [
 ];
 
 export default () => (
-	<ul>{ links.map(Item) }</ul>
+	<Header id="top">
+		<ul>{ links.map(Item) }</ul>
+	</Header>
 );

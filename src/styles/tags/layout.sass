@@ -2,40 +2,27 @@
  * App Layout
  */
 
-$side-width: 40 * $base-unit
-$side-width-gap: 7 * $base-unit
-
 #app
 	@extend %fullscreen
-	// "overlay"
-	&::after
-		position: absolute
-		@extend %fullscreen
-		top: 0
-		background: rgba($black,0.35)
-		transition: all $base-timing ease-in-out 100ms
-		content: ''
-		opacity: 0
-		z-index: -1
-	&.overlay::after
-		opacity: 1
-		z-index: 1
-
-#side
-	position: absolute
-	will-change: transform
-	transform: translateX(-100%)
-	background-color: $white
-	width: calc(100vw - #{$side-width-gap})
-	transition: all $base-timing ease-in-out
-	max-width: $side-width
-	height: 100vh
-	z-index: 10
-	left: 0
-	top: 0
-	&.active
-		@extend %md-shadow--2
-		transform: translateX(0%)
 
 // #content
 // 	padding-top: $header-height
+
+#top
+	position: relative
+	will-change: transform
+	transform: translateY(0%)
+	height: $base-unit*6
+	background-color: $orange
+	right: 0
+	left: 0
+	top: 0
+.is--fixed
+	position: fixed
+	transform: translateY(-100%)
+.is--ready
+	transition: all $base-timing ease-in-out
+.is--shown
+	@extend %md-shadow--1
+	transform: translateY(0%)
+
