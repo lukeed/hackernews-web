@@ -17,6 +17,8 @@ body
 	-webkit-touch-callout: none
 	@extend %fullscreen
 	+font-smoothing()
+	@media screen and (max-width: 481px)
+		font-size: 0.875 * $font-size
 
 a
 	color: $primary

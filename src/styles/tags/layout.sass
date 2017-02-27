@@ -12,11 +12,27 @@
 	position: relative
 	will-change: transform
 	transform: translateY(0%)
-	height: $base-unit*6
+	// height: $base-unit*6
 	background-color: $orange
 	right: 0
 	left: 0
 	top: 0
+	nav
+		height: $base-unit*6
+		padding: 0 $base-unit
+		text-align: center
+		@extend %acenter
+		@extend %dflex
+	a
+		@extend %flex
+		color: rgba($offwhite, 0.65)
+		font-weight: 600
+		letter-spacing: 1px
+		text-decoration: none
+		transition: color $base-timing ease-in-out
+		&.active
+			color: $white
+
 .is--fixed
 	position: fixed
 	transform: translateY(-100%)
