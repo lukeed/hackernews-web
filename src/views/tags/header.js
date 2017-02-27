@@ -1,12 +1,6 @@
 import { h } from 'preact';
 import Header from 'preact-scroll-header';
 
-const Item = props => (
-	<li className={{ active: location.pathname === props.path }}>
-		<a href={ props.path }>{ props.name }</a>
-	</li>
-);
-
 const links = [
 	{name: 'Top', path: '/'},
 	{name: 'New', path: '/new'},
@@ -15,8 +9,15 @@ const links = [
 	{name: 'Jobs', path: '/jobs'}
 ];
 
-export default () => (
-	<Header id="top">
-		<ul>{ links.map(Item) }</ul>
-	</Header>
-);
+export default props => {
+	const cur = '/' + props.type.replace('top', '');
+	return (
+		<Header id="top" listenTo={ document.body }>
+			<nav>
+				{ links.map(o => (
+					<a className={{ active: cur === o.path }} href={ o.path }>{ o.name }</a>
+				)) }
+			</nav>
+		</Header>
+	);
+}

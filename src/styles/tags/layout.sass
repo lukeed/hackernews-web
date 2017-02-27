@@ -2,23 +2,24 @@
  * App Layout
  */
 
+$header-height: 6 * $base-unit
+
 #app
 	@extend %fullscreen
 
-// #content
-// 	padding-top: $header-height
+#content
+	padding-top: $header-height
 
 #top
-	position: relative
+	position: absolute
 	will-change: transform
 	transform: translateY(0%)
-	// height: $base-unit*6
 	background-color: $orange
 	right: 0
 	left: 0
 	top: 0
 	nav
-		height: $base-unit*6
+		height: $header-height
 		padding: 0 $base-unit
 		text-align: center
 		@extend %acenter
@@ -33,12 +34,14 @@
 		&.active
 			color: $white
 
-.is--fixed
-	position: fixed
-	transform: translateY(-100%)
-.is--ready
-	transition: all $base-timing ease-in-out
-.is--shown
-	@extend %md-shadow--1
-	transform: translateY(0%)
+	&.is--fixed
+		position: fixed
+		transform: translateY(-100%)
+
+	&.is--ready
+		transition: all $base-timing ease-in-out
+
+	&.is--shown
+		@extend %md-shadow--1
+		transform: translateY(0%)
 
