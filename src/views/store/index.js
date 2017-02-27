@@ -19,7 +19,7 @@ function item(id) {
 
 export default {
 	getType(type) {
-		return once(`${type}stories`);
+		return once(`${ type.substr(1) || 'top' }stories`);
 	},
 
 	getItem(id) {
