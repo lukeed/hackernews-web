@@ -3484,6 +3484,10 @@ osenv@0, osenv@^0.1.0:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
 
+p-queue@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/p-queue/-/p-queue-1.0.0.tgz#698cde72cc9f57aa3bc7d30ad8019cd736aaed3e"
+
 package-json@^2.0.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/package-json/-/package-json-2.4.0.tgz#0d15bd67d1cbbddbb2ca222ff2edb86bcb31a8bb"
@@ -3907,9 +3911,9 @@ preact-router@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/preact-router/-/preact-router-2.4.1.tgz#2dbf1756724eb2b0c401678c6cee5af2e7a2ccb8"
 
-preact-scroll-header@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/preact-scroll-header/-/preact-scroll-header-1.0.0.tgz#c7cad1909ad3413e5cefbf615e3fa8829207f77a"
+preact-scroll-header@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/preact-scroll-header/-/preact-scroll-header-1.0.1.tgz#ce67ad20cacaaf33a84019444699dc3870b1b45f"
 
 preact@^7.2.0:
   version "7.2.0"
