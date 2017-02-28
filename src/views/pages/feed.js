@@ -1,34 +1,8 @@
-import { h, Component } from 'preact';
+import { h } from 'preact';
+import Item from '../tags/item';
 
-export default props => {
-	console.log('feed got', performance.now());
-	return (
-		<div>
-			<p>{ props.type }</p>
-			{ props.items.map(el => <li>{ el }</li>) }
-		</div>
-	);
-}
-
-// export default class extends Component {
-// 	componentWillMount() {
-// 		console.log('--- feed Will mount', performance.now());
-// 	}
-
-// 	shouldComponentUpdate(props, state) {
-// 		return this.props.type !== props.type;
-// 	}
-
-// 	componentWillUpdate(nextProps, nextState) {
-// 		console.log('--- feed will update');
-// 	}
-
-// 	render(props, state) {
-// 		console.log('feed render', performance.now());
-// 		return (
-// 			<div>
-// 				<p>{ props.type }</p>
-// 			</div>
-// 		);
-// 	}
-// }
+export default props => (
+	<div className="feed">
+		{ props.items.map(id => <Item id={ id } key={ id } />) }
+	</div>
+);

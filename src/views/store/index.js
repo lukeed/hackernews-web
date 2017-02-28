@@ -1,21 +1,20 @@
+import Queue from 'p-queue';
+
+const queue = new Queue({ concurrency: 5 });
+
 firebase.initializeApp({
 	databaseURL: 'https://hacker-news.firebaseio.com'
 });
 
 const API = firebase.database().ref('/v0');
 
-function once(child) {
-	return new Promise((resolve, reject) => {
-		API.child(child).once('value', snap => resolve(snap.val()));
-	});
-}
+const once = child => new Promise((resolve, reject) => {
+	API.child(child).once('value', snap => resolve(snap.val()));
+});
 
-function watch(child) {
-}
+const item = id => once(`item/${id}`);
 
-function item(id) {
-	return once(`item/${id}`);
-}
+const watch = child => {};
 
 export default {
 	getType(type) {
@@ -23,7 +22,8 @@ export default {
 	},
 
 	getItem(id) {
-		return item(id);
+		// return item(id);
+		return queue.add(() => item(id));
 	},
 
 	getItems(ids) {
