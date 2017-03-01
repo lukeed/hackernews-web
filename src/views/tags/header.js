@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import { Link } from 'preact-router';
 import Header from 'preact-scroll-header';
 
 const links = [
@@ -13,7 +14,7 @@ export default props => (
 	<Header id="top" listenTo={ document.body }>
 		<nav>
 			{ links.map(o => (
-				<a className={{ active: props.url === o.path }} href={ o.path }>{ o.name }</a>
+				<Link className={{ active: props.url === o.path }} href={ o.path }>{ o.name }</Link>
 			)) }
 		</nav>
 	</Header>
