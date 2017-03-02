@@ -11,7 +11,7 @@
   "scripts": {
     "build": "webpack --env.production --config config/webpack",
     "start": "serve dist -s",
-    "watch": "webpack-dashboard -- webpack-dev-server --config config/webpack"
+    "watch": "webpack-dev-server --config config/webpack"
   },
   "dependencies": {
     "md-colors": "^1.0.0",
@@ -42,7 +42,6 @@
     "style-loader": "^0.13.1",
     "sw-precache-webpack-plugin": "^0.9.0",
     "webpack": "^2.2.1",
-    "webpack-dashboard": "^0.3.0",
     "webpack-dev-server": "^2.3.0"
   }
 }
