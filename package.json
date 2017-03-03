@@ -11,6 +11,7 @@
   "scripts": {
     "build": "webpack --env.production --config config/webpack",
     "start": "serve dist -s",
+    "stats": "webpack --json --config config/webpack | webpack-bundle-size-analyzer",
     "watch": "webpack-dev-server --config config/webpack"
   },
   "dependencies": {
@@ -43,6 +44,7 @@
     "style-loader": "^0.13.1",
     "sw-precache-webpack-plugin": "^0.9.0",
     "webpack": "^2.2.1",
+    "webpack-bundle-size-analyzer": "^2.5.0",
     "webpack-dev-server": "^2.3.0"
   }
 }
