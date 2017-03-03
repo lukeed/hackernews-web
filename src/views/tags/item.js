@@ -1,5 +1,7 @@
-import { h, Component } from 'preact';
+import { h, Component, options } from 'preact';
 import API from '../store';
+
+console.log(options);
 
 function hostname(url) {
 	const host = url.replace(/^https?:\/\//, '').replace(/\/.*$/, '');

@@ -1,6 +1,7 @@
 import Queue from 'p-queue';
+import Memoize from 'p-memoize';
 
-const queue = new Queue({ concurrency: 5 });
+export const queue = new Queue({ concurrency: 5 });
 
 firebase.initializeApp({
 	databaseURL: 'https://hacker-news.firebaseio.com'
@@ -12,7 +13,8 @@ const once = child => new Promise((resolve, reject) => {
 	API.child(child).once('value', snap => resolve(snap.val()));
 });
 
-const item = id => once(`item/${id}`);
+// const item = id => once(`item/${id}`);
+const memItem = Memoize(once, {maxAge: 5 * 60 * 1000}); // 5min
 
 const watch = child => {};
 
@@ -23,7 +25,7 @@ export default {
 
 	getItem(id) {
 		// return item(id);
-		return queue.add(() => item(id));
+		return queue.add(() => memItem(`item/${id}`));
 	},
 
 	getItems(ids) {
