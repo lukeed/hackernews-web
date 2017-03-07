@@ -1,9 +1,9 @@
-import { render } from 'preact';
+import { h, render } from 'preact';
 import './index.sass';
 
 if (process.env.NODE_ENV === 'production') {
-	// import App from './views';
-	render(App, document.body);
+	const App = require('./views').default;
+	render(<App />, document.body);
 
 	// cache all assets if browser supports serviceworker
 	if ('serviceWorker' in navigator && location.protocol === 'https:') {
@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'production') {
 	let elem, App;
 	function init() {
 		App = require('./views').default;
-		elem = render(App, document.body, elem);
+		elem = render(<App />, document.body, elem);
 	}
 
 	init();
