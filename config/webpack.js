@@ -35,6 +35,7 @@ module.exports = env => {
 				loader: 'babel-loader',
 				include(file) {
 					if (file.split(/[/\\]/).indexOf('node_modules')===-1) return true;
+					if (/(mimic-fn|mem|p-(memoize|queue))/i.test(file)) return true; // edge cases
 					let pkg, manifest = resolve(file.replace(exclude, '$1'), 'package.json');
 					try {
 						pkg = JSON.parse(readFileSync(manifest));
