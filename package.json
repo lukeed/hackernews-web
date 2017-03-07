@@ -2,7 +2,7 @@
   "private": true,
   "version": "0.0.0",
   "license": "MIT",
-  "repository": "lukeed/preact-starter",
+  "repository": "lukeed/hackernews-web",
   "author": {
     "name": "Luke Edwards",
     "email": "luke.edwards05@gmail.com",
