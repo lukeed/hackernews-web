@@ -17,6 +17,7 @@
   "dependencies": {
     "compression": "^1.6.2",
     "express": "^4.15.2",
+    "firebase": "^3.7.4",
     "md-colors": "^1.0.0",
     "md-shadows": "^1.0.0",
     "p-memoize": "^1.0.0",
