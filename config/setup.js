@@ -42,7 +42,7 @@ module.exports = isProd => {
 			new webpack.optimize.UglifyJsPlugin(uglify),
 			new ExtractText('styles.[hash].css'),
 			new SWPrecache({
-				filename: 'service-worker.js',
+				filename: 'sw.js',
 				dontCacheBustUrlsMatching: /./,
 				navigateFallback: 'index.html',
 				staticFileGlobsIgnorePatterns: [/\.map$/]

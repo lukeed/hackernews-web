@@ -3,7 +3,8 @@ const { join, resolve } = require('path');
 const ExtractText = require('extract-text-webpack-plugin');
 const setup = require('./setup');
 
-const dist = join(__dirname, '../dist');
+const publicPath = '/static/'; // asset link
+const publicDir = join(__dirname, `../dist/${publicPath}`); // actual destination
 const exclude = /(.*([\/\\]node_modules|\.\.)[\/\\](@[^\/\\]+[\/\\])?[^\/\\]+)([\/\\].*)?$/g;
 
 module.exports = env => {
@@ -12,15 +13,14 @@ module.exports = env => {
 	return {
 		entry: {
 			app: './src/index.js',
-			vendor: [
+			// vendor: [
 				// pull these to a `vendor.js` file
-				'preact'
-			]
+			// ]
 		},
 		output: {
-			path: dist,
-			filename: '[name].[hash].js',
-			publicPath: '/'
+			publicPath,
+			path: publicDir,
+			filename: '[name].[hash].js'
 		},
 		resolve: {
 			alias: {
@@ -53,7 +53,7 @@ module.exports = env => {
 		plugins: setup(isProd),
 		devtool: !isProd && 'eval',
 		devServer: {
-			contentBase: dist,
+			contentBase: publicDir,
 			port: process.env.PORT || 3000,
 			historyApiFallback: true,
 			compress: isProd,
