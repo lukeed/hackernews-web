@@ -1,7 +1,6 @@
 import { h, Component } from 'preact'
 import { Router } from 'preact-router';
 import Progress from 'preact-progress';
-// import API, { queue } from './store';
 import Header from './tags/header';
 import { getType } from './store';
 import * as pages from './pages';
@@ -17,20 +16,10 @@ const loadComplete = ctx => {
 
 export default class App extends Component {
 	state = { url:location.pathname, percent:0 }
-		// items: [],
-		// percent: 0,
-	// }
 
 	onRoute = ({ url }) => {
 		window.ga && ga('send', 'pageview', url);
 		this.setState({ url });
-		// // queue.clear();
-		// console.log('IN ROUTE', performance.now());
-		// this.setState({ items:[], percent:0, url });
-		// getType(url).then(items => {
-		// 	console.log('all items', items);
-		// 	this.setState({ items, percent:100 })
-		// });
 	}
 
 	shouldComponentUpdate(_, state) {

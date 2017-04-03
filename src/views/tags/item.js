@@ -1,5 +1,4 @@
 import { h } from 'preact';
-// import { getItem } from '../store';
 
 function hostname(url) {
 	const host = url.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
