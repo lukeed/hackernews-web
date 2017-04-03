@@ -23,17 +23,16 @@ export default class Feed extends Component {
 		this.watch();
 	}
 
-	componentWillReceiveProps(next) {
-		if (next.type !== this.props.type) {
-			this.setState({ page:1 });
+	componentWillUpdate({ type, page }) {
+		if (this.props.type !== type || this.props.page !== page) {
+			console.log('UPDATED THE PROPS.TYPE OR PAGE');
+			getPage(type, page).then(items => this.setState({ items }));
 		}
 	}
 
-	componentWillUpdate({ type }, { page }) {
-		if (this.props.type !== type || this.state.page !== page) {
-			console.log('UPDATED THE PROPS.TYPE OR PAGE');
-			getPage(type, page).then(items => this.setState({ items }, this.watch));
-		}
+	componentDidUpdate({ type }) {
+		(this.props.type !== type) && this.watch();
+		console.log('scroll `doc.body` to top');
 	}
 
 	componentWillUnmount() {
