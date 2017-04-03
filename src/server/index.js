@@ -11,7 +11,7 @@ express()
 	.use(compression({ threshold: 0 }))
 	.use('/static', express.static(pubDir, { maxAge }))
 	.use('/sw.js', express.static(`${pubDir}/sw.js`, { setHeaders }))
-	.use('/api', require('./api'))
+	.use(require('./routes'))
 	.get('*', (_, res) => {
 		res.sendFile(`${pubDir}/index.html`);
 	})
