@@ -1,8 +1,9 @@
 import { h, Component } from 'preact'
 import { Router } from 'preact-router';
 import Progress from 'preact-progress';
-import API, { queue } from './store';
+// import API, { queue } from './store';
 import Header from './tags/header';
+import { getType } from './store';
 import * as pages from './pages';
 
 const loadChange = (ctx, val) => {
@@ -14,43 +15,39 @@ const loadComplete = ctx => {
 	ctx.base.firstChild.style.opacity = 0;
 };
 
-export default class extends Component {
-	state = {
-		items: [],
-		percent: 0,
-		url: location.pathname
-	}
+export default class App extends Component {
+	state = { url:location.pathname, percent:0 }
+		// items: [],
+		// percent: 0,
+	// }
 
 	onRoute = ({ url }) => {
 		window.ga && ga('send', 'pageview', url);
-		// queue.clear();
-		this.setState({ items:[], percent:0, url });
-		API.getType(url).then(items => this.setState({ items, percent:100 }));
-	}
-
-	componentWillMount() {
-		console.log('root will mount', performance.now());
+		this.setState({ url });
+		// // queue.clear();
+		// console.log('IN ROUTE', performance.now());
+		// this.setState({ items:[], percent:0, url });
+		// getType(url).then(items => {
+		// 	console.log('all items', items);
+		// 	this.setState({ items, percent:100 })
+		// });
 	}
 
 	shouldComponentUpdate(_, state) {
 		const now = this.state;
-		const bool = now.url !== state.url
-			|| now.percent !== state.percent
-			|| now.items.length !== state.items.length;
-		console.log('root should update?', bool);
+		const bool = now.url !== state.url || now.percent !== state.percent;
+		console.log(`app update? ${bool}`);
 		return bool;
 	}
 
 	render(_, state) {
-		console.log('root mount', performance.now());
 		return (
 			<div id="app">
 				<Header url={ state.url } />
 				<main id="content">
 					<Router onChange={ this.onRoute }>
-						<pages.feed path="/" type="top" items={ state.items } />
-						<pages.feed path="/:type" items={ state.items } />
 						<pages.item path="/item/:id" />
+						<pages.feed path="/:type" />
 						<pages.error default />
 					</Router>
 				</main>

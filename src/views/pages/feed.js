@@ -1,8 +1,24 @@
-import { h } from 'preact';
+import { h, Component } from 'preact';
 import Item from '../tags/item';
 
-export default props => (
-	<div className="feed">
-		{ props.items.map(id => <Item id={ id } key={ id } />) }
-	</div>
-);
+export default class Feed extends Component {
+	state = { items: [] }
+
+	componentWillMount() {
+		const items = window.DATA || [];
+		window.DATA = false;
+		this.setState({ items });
+	}
+
+	componentWillUnmount() {
+		console.log('remove firebase listener for', this.props.type);
+	}
+
+	render(props, state) {
+		return (
+			<div className="feed">
+				{ state.items.map(obj => <Item key={ obj.id } data={ obj } />) }
+			</div>
+		)
+	}
+}
