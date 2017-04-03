@@ -1,34 +1,20 @@
-import Queue from 'p-queue';
-import Memoize from 'p-memoize';
+import fetch from 'unfetch';
 
-export const queue = new Queue({ concurrency: 5 });
+function get(uri) {
+	return fetch(`/api/${uri}`).then(res => res.json()).then(res => res.data);
+}
 
-firebase.initializeApp({
-	databaseURL: 'https://hacker-news.firebaseio.com'
-});
+export function getItem(id) {
+	return get(`item/${id}`);
+}
 
-const API = firebase.database().ref('/v0');
+export function getItems(ids) {
+	console.log('received', ids);
+	return Promise.all(ids.map(getItem));
+}
 
-const once = child => new Promise((resolve, reject) => {
-	API.child(child).once('value', snap => resolve(snap.val()));
-});
-
-// const item = id => once(`item/${id}`);
-const memItem = Memoize(once, {maxAge: 5 * 60 * 1000}); // 5min
-
-const watch = child => {};
-
-export default {
-	getType(type) {
-		return once(`${ type.substr(1) || 'top' }stories`);
-	},
-
-	getItem(id) {
-		// return item(id);
-		return queue.add(() => memItem(`item/${id}`));
-	},
-
-	getItems(ids) {
-		return Promise.all(ids.map(id => item(id)));
-	}
+export function getType(type) {
+	type = type.substr(1) || 'top';
+	// return get(type).then(getItems);
+	return get(type);
 }
