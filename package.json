@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "webpack --env.production --config config/webpack",
-    "start": "serve dist -s",
+    "start": "forever start dist",
     "stats": "webpack --json --config config/webpack | webpack-bundle-size-analyzer",
     "watch": "webpack-dev-server --config config/webpack"
   },
@@ -18,6 +18,7 @@
     "compression": "^1.6.2",
     "express": "^4.15.2",
     "firebase": "^3.7.4",
+    "forever": "^0.15.3",
     "md-colors": "^1.0.0",
     "md-shadows": "^1.0.0",
     "p-memoize": "^1.0.0",
@@ -44,7 +45,6 @@
     "node-sass": "^4.5.0",
     "postcss-loader": "^1.2.2",
     "sass-loader": "^5.0.1",
-    "serve": "^3.2.7",
     "style-loader": "^0.13.1",
     "sw-precache-webpack-plugin": "^0.9.0",
     "webpack": "^2.2.1",
