@@ -9,12 +9,9 @@ export function getItem(id) {
 }
 
 export function getItems(ids) {
-	console.log('received', ids);
 	return Promise.all(ids.map(getItem));
 }
 
-export function getType(type) {
-	type = type.substr(1) || 'top';
-	// return get(type).then(getItems);
-	return get(type);
+export function getPage(type, page) {
+	return get(`${type}?page=${page}`);
 }
