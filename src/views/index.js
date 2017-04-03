@@ -47,7 +47,7 @@ export default class App extends Component {
 				<main id="content">
 					<Router onChange={ this.onRoute }>
 						<pages.item path="/item/:id" />
-						<pages.feed path="/:type" />
+						<pages.feed path="/:type/:page?" />
 						<pages.error default />
 					</Router>
 				</main>

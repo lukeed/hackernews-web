@@ -65,8 +65,9 @@ app
 	.get('/item/:id', async (req, res) => {
 		send(res, await getItem(req.params.id));
 	})
-	.get('/:type', async (req, res) => {
-		sendPage(res, TITLE, await getPage(req.params.type, req.query.page));
+	.get('/:type/:page?', async (req, res) => {
+		const { type, page } = req.params;
+		sendPage(res, TITLE, await getPage(type, page));
 	})
 	.get('/', (_, res) => res.redirect('/top'));
 
