@@ -52,9 +52,9 @@ types.forEach(type => {
 const app = Router();
 
 app
-	.get('/api/:type', (req, res) => send(res, lists.get(req.params.type)))
 	.get('/api/item/:id', async (req, res) => send(res, await getItem(req.params.id)))
 	.get('/api/user/:name', async (req, res) => send(res, await getUser(req.params.name)))
+	.get('/api/:type', async (req, res) => send(res, await getPage(req.params.type, req.query.page)))
 
 	/**
 	 * Front-end Routes
