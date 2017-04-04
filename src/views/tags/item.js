@@ -20,7 +20,7 @@ function timeAgo(time) {
   return pluralize(~~(between / 86400), ' day');
 }
 
-export default function (props) {
+export default props => {
 	const d = props.data;
 	return (
 		<div className="feed__item">
