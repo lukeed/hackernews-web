@@ -27,6 +27,7 @@
     "preact-progress": "^1.0.0",
     "preact-router": "^2.4.1",
     "preact-scroll-header": "^1.0.1",
+    "serve-favicon": "^2.4.2",
     "unfetch": "^2.1.2"
   },
   "devDependencies": {
