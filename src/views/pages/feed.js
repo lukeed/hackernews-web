@@ -1,9 +1,10 @@
 import { h, Component } from 'preact';
+import { Link } from 'preact-router';
 import { getPage } from '../store';
 import Item from '../tags/item';
 
 export default class Feed extends Component {
-	state = { items:[], page:1 }
+	state = { items:[] }
 
 	watch() {
 		console.log(`start firebase watcher for ${this.props.type}`);
@@ -39,9 +40,15 @@ export default class Feed extends Component {
 		this.unwatch();
 	}
 
-	render(_, state) {
+	render(props, state) {
+		const page = +props.page || 1;
 		return (
 			<div className="feed">
+				<nav>
+					<Link href={ `/${props.type}/${page-1}` } class="prev">&lt; prev</Link>
+					<span>{ page }/25</span>
+					<Link href={ `/${props.type}/${page+1}` } class="prev">next &gt;</Link>
+				</nav>
 				{ state.items.map(obj => <Item key={ obj.id } data={ obj } />) }
 			</div>
 		)
