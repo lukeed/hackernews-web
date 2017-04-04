@@ -21,8 +21,6 @@
     "forever": "^0.15.3",
     "md-colors": "^1.0.0",
     "md-shadows": "^1.0.0",
-    "p-memoize": "^1.0.0",
-    "p-queue": "^1.0.0",
     "preact": "^7.2.0",
     "preact-progress": "^1.0.0",
     "preact-router": "^2.4.1",
