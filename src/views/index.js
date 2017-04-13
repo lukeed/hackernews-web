@@ -2,7 +2,6 @@ import { h, Component } from 'preact'
 import { Router } from 'preact-router';
 import Progress from 'preact-progress';
 import Header from './tags/header';
-import { getType } from './store';
 import * as pages from './pages';
 
 const loadChange = (ctx, val) => {
@@ -14,17 +13,19 @@ const loadComplete = ctx => {
 	ctx.base.firstChild.style.opacity = 0;
 };
 
+const getType = () => location.pathname.split('/')[1];
+
 export default class App extends Component {
-	state = { url:location.pathname, percent:0 }
+	state = { type:getType(), percent:0 }
 
 	onRoute = ({ url }) => {
 		window.ga && ga('send', 'pageview', url);
-		this.setState({ url });
+		this.setState({ type:getType() });
 	}
 
 	shouldComponentUpdate(_, state) {
 		const now = this.state;
-		const bool = now.url !== state.url || now.percent !== state.percent;
+		const bool = now.type !== state.type || now.percent !== state.percent;
 		console.log(`app update? ${bool}`);
 		return bool;
 	}
@@ -32,7 +33,7 @@ export default class App extends Component {
 	render(_, state) {
 		return (
 			<div id="app">
-				<Header url={ state.url } />
+				<Header curr={ '/' + state.type } />
 				<main id="content">
 					<Router onChange={ this.onRoute }>
 						<pages.item path="/item/:id" />

@@ -14,7 +14,7 @@ export default props => (
 	<Header id="top" listenTo={ document.body }>
 		<nav>
 			{ links.map(o => (
-				<Link className={{ active: props.url === o.path }} href={ o.path } onClick={ this.update }>{ o.name }</Link>
+				<Link className={{ active: props.curr === o.path }} href={ o.path } onClick={ this.update }>{ o.name }</Link>
 			)) }
 		</nav>
 	</Header>
