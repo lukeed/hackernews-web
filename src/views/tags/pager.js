@@ -10,7 +10,7 @@ export default props => {
 	const base = `/${props.type}`;
 	const max = props.total;
 	return (
-		<nav>
+		<nav className="pager">
 			<GoTo href={ `${base}/${now-1}` } text="&lt; prev" cond={ now > 1 } />
 			<span>{ now }/{ max }</span>
 			<GoTo href={ `${base}/${now+1}` } text="next &gt;" cond={ now < max } />
