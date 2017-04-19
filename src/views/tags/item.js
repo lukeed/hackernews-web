@@ -1,24 +1,5 @@
 import { h } from 'preact';
-
-function hostname(url) {
-	const host = url.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
-	const parts = host.split('.').slice(-3);
-	(parts[0] === 'www') && parts.shift();
-	return parts.join('.');
-}
-
-const pluralize = (time, label) => (time === 1) ? (time + label) : (time + label + 's');
-
-function timeAgo(time) {
-  const between = Date.now() / 1000 - Number(time);
-  if (between < 3600) {
-    return pluralize(~~(between / 60), ' minute');
-  }
-  if (between < 86400) {
-    return pluralize(~~(between / 3600), ' hour');
-  }
-  return pluralize(~~(between / 86400), ' day');
-}
+import { hostname, timeAgo } from '../util';
 
 export default props => {
 	const d = props.data;

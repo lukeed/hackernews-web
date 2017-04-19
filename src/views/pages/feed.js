@@ -24,7 +24,6 @@ export default class Feed extends Component {
 		console.log(`stop firebase watcher for ${this.props.type}`);
 	}
 
-
 	componentWillMount() {
 		const data = window.DATA;
 		window.DATA = void 0;
