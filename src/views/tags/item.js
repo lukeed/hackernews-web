@@ -23,7 +23,7 @@ function timeAgo(time) {
 export default props => {
 	const d = props.data;
 	return (
-		<div className="feed__item">
+		<div className="item">
 			<i>{ d.score }</i>
 			<header>
 				<a href={ d.url }>{ d.title }</a>
