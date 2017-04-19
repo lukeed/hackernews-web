@@ -25,7 +25,7 @@ const sendPage = (res, title, content) => res.send(template.replace(titleRgx, ti
 
 const getChild = async key => await DB.child(key).once('value').then(s => s.val());
 
-const getUser = async name => users.get(name) || await addCache(name, users);
+const getUser = async id => (id = `/user/${id}`) && (users.get(id) || await addCache(id, users));
 const getItem = async id => (id = `/item/${id}`) && (items.get(id) || await addCache(id, items));
 const cacheItem = id => addCache(`/item/${id}`, items); // hoist for `forEach`
 
@@ -61,10 +61,12 @@ app
 	 * Front-end Routes
 	 */
 	.get('/user/:name', async (req, res) => {
-		send(res, await getUser(req.params.name));
+		const data = await getUser(req.params.name);
+		sendPage(res, `${TITLE} | ${data.id}'s Profile`, data);
 	})
 	.get('/item/:id', async (req, res) => {
-		send(res, await getItem(req.params.id));
+		const data = await getItem(req.params.id);
+		sendPage(res, `${TITLE} | ${data.title}`, data);
 	})
 	.get('/:type/:page?', async (req, res) => {
 		const { type, page } = req.params;
