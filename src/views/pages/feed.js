@@ -52,7 +52,7 @@ export default class Feed extends Component {
 
 	render(props, state) {
 		return (
-			<div className="feed">
+			<div className="page--feed">
 				<Pager type={ props.type } curr={ +props.page || 1 } total={ state.pages } />
 				{ state.items.map(obj => <Item key={ obj.id } data={ obj } />) }
 			</div>
