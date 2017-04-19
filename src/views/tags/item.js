@@ -30,9 +30,9 @@ export default props => {
 				{ d.url && <small>via { hostname(d.url) }</small> }
 			</header>
 			<footer>
-				<span>by <a href="#">{ d.by }</a></span>
+				<span>by <a href={ `/user/${ d.by }` }>{ d.by }</a></span>
 				<time datetime={ d.time }>{ timeAgo(d.time) }</time>
-				{ d.hasOwnProperty('descendants') && <a href="#" className="comments">{ d.descendants } comments</a> }
+				{ d.hasOwnProperty('descendants') && <a href={ `/item/${ d.id }` } className="comments">{ d.descendants } comments</a> }
 			</footer>
 		</div>
 	);
