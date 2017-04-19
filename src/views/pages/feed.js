@@ -6,6 +6,16 @@ import Item from '../tags/item';
 export default class Feed extends Component {
 	state = { items:[], pages:1 }
 
+	setData = obj => this.setState({
+		items: obj.items || [],
+		pages: obj.total ? Math.ceil(obj.total / 30) : 1
+	})
+
+	getData(type, page) {
+		const p = this.props;
+		getPage(type || p.type, page || p.page).then(this.setData);
+	}
+
 	watch() {
 		console.log(`start firebase watcher for ${this.props.type}`);
 	}
@@ -14,15 +24,11 @@ export default class Feed extends Component {
 		console.log(`stop firebase watcher for ${this.props.type}`);
 	}
 
-	setData = obj => this.setState({
-		items: obj.items || [],
-		pages: obj.total ? Math.ceil(obj.total / 30) : 1
-	})
 
 	componentWillMount() {
-		const data = window.DATA || {};
-		window.DATA = false;
-		this.setData(data);
+		const data = window.DATA;
+		window.DATA = void 0;
+		(data == void 0) ? this.getData() : this.setData(data);
 	}
 
 	componentDidMount() {
@@ -32,7 +38,7 @@ export default class Feed extends Component {
 	componentWillUpdate({ type, page }) {
 		if (this.props.type !== type || this.props.page !== page) {
 			console.log('UPDATED THE PROPS.TYPE OR PAGE');
-			getPage(type, page).then(this.setData);
+			this.getData(type, page);
 		}
 	}
 
