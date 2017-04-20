@@ -4,7 +4,7 @@ import { hostname, timeAgo } from '../util';
 export default props => {
 	const d = props.data;
 	return (
-		<div className="item">
+		<div className="card item">
 			<i>{ d.score }</i>
 			<header>
 				<a href={ d.url }>{ d.title }</a>
