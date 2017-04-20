@@ -17,11 +17,15 @@ export default class Feed extends Component {
 	}
 
 	watch() {
+		(this.listener !== void 0) && this.unwatch();
 		console.log(`start firebase watcher for ${this.props.type}`);
+		this.listener = true;
 	}
 
 	unwatch() {
 		console.log(`stop firebase watcher for ${this.props.type}`);
+		// this.listener(); // <-- unhook
+		this.listener = false;
 	}
 
 	componentWillMount() {
