@@ -27,6 +27,7 @@ export default class App extends Component {
 					<Router onChange={ this.onRoute }>
 						<pages.item path="/item/:id" />
 						<pages.feed path="/:type/:page?" />
+						<pages.user path="/user/:name" />
 						<pages.error default />
 					</Router>
 				</main>
