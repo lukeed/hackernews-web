@@ -14,7 +14,7 @@ export default props => {
 				<div className="score">{ d.score } points</div>
 				<span>by <a href={ `/user/${ d.by }` }>{ d.by }</a></span>
 				<time datetime={ d.time }>{ timeAgo(d.time) }</time>
-				{ d.hasOwnProperty('descendants') && <a href={ `/item/${ d.id }` } className="comments">{ d.descendants } comments</a> }
+				{ d.hasOwnProperty('descendants') && <a href={ `/item/${ d.id }` } className="to-item">{ d.descendants } comments</a> }
 			</footer>
 		</div>
 	);
