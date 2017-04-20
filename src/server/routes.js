@@ -35,6 +35,11 @@ async function addCache(key, cache) {
 	return data;
 }
 
+function getComments(ids) {
+	const keys = ids.split(',').map(id => `/item/${id}`);
+	return Promise.all(keys.map(getChild));
+}
+
 function getPage(type, page) {
 	const end = (+page || 1) * PER;
 	const all = lists.get(type) || [];
@@ -55,6 +60,7 @@ const app = Router();
 app
 	.get('/api/item/:id', async (req, res) => send(res, await getItem(req.params.id)))
 	.get('/api/user/:name', async (req, res) => send(res, await getUser(req.params.name)))
+	.get('/api/comment/:ids', async (req, res) => send(res, await getComments(req.params.ids))) // no cache
 	.get('/api/:type', async (req, res) => send(res, await getPage(req.params.type, req.query.page)))
 
 	/**
