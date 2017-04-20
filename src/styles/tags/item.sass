@@ -3,15 +3,9 @@
  */
 
 .item
-	position: relative
-	background: $white
-	padding: 1.5*$base-unit $base-unit
-	margin-bottom: $base-unit/2
-	border-radius: 1px
-	box-shadow: 0 1px 1px rgba($black,0.06)
-
 	a
 		color: inherit
+		text-decoration: underline
 
 	i
 		position: absolute
@@ -31,6 +25,8 @@
 		line-height: 1.25
 		font-weight: 700
 		padding-right: 5 * $base-unit
+		a
+			text-decoration: none
 
 	small
 		display: block
@@ -44,23 +40,21 @@
 		font-size: 80%
 		margin-top: $base-unit/2
 		color: initial
-		a
-			text-decoration: underline
 
-	time,
-	.to-item,
-	.page--item & footer span
-		padding-left: $base-unit
-		margin-left: $base-unit/2
-		position: relative
-		&::before
-			position: absolute
-			content: '|'
-			left: 0
+time,
+.to-item,
+.page--item .item footer span
+	padding-left: $base-unit
+	margin-left: $base-unit/2
+	position: relative
+	&::before
+		position: absolute
+		content: '|'
+		left: 0
 
-	time::after
-		position: relative
-		content: ' ago'
+time::after
+	position: relative
+	content: ' ago'
 
 .score
 	position: relative
