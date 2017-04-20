@@ -36,7 +36,7 @@ export default class extends Component {
 
 				<div className="card comments__count">
 					{ len } comments
-					<span>{ len && state.loading && 'Loading...' }</span>
+					<span>{ (len && state.loading) ? 'Loading...' : '' }</span>
 				</div>
 
 				<ul className="card comments">
