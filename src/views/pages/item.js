@@ -1,5 +1,6 @@
 import { h, Component } from 'preact';
 import { getItem, getComments } from '../store';
+import Comment from '../tags/comment';
 import Item from '../tags/item';
 
 export default class extends Component {
@@ -32,6 +33,15 @@ export default class extends Component {
 		return (
 			<div className="page--item">
 				<Item data={ d } />
+
+				<div className="card comments__count">
+					{ len } comments
+					<span>{ len && state.loading && 'Loading...' }</span>
+				</div>
+
+				<ul className="card comments">
+					{ state.kids.map(obj => <Comment data={obj} />) }
+				</ul>
 			</div>
 		);
 	}
