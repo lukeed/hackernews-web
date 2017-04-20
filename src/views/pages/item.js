@@ -8,6 +8,7 @@ export default class extends Component {
 
 	setData = data => {
 		this.setState({ data });
+		if (data.kids === void 0) return;
 		getComments(data.kids).then(kids => this.setState({ kids, loading:false }));
 	}
 
