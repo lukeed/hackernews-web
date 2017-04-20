@@ -36,8 +36,8 @@ async function addCache(key, cache) {
 }
 
 function getPage(type, page) {
-	const all = lists.get(type);
 	const end = (+page || 1) * PER;
+	const all = lists.get(type) || [];
 	const data = all.slice(end - PER, end);
 	return Promise.all(data.map(getItem)).then(items => ({ items, total:all.length }));
 }
