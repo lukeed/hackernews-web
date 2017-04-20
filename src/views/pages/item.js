@@ -40,9 +40,7 @@ export default class extends Component {
 					<span>{ (len && state.loading) ? 'Loading...' : '' }</span>
 				</div>
 
-				<ul className="card comments">
-					{ state.kids.map(obj => <Comment data={obj} />) }
-				</ul>
+				{ (len > 0) && (<ul className="card comments">{ state.kids.map(obj => <Comment data={obj} />) }</ul>) }
 			</div>
 		);
 	}
