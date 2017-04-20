@@ -1,14 +1,14 @@
 import { h, Component } from 'preact';
-import { getItem } from '../store';
+import { getItem, getComments } from '../store';
 import Item from '../tags/item';
 
 export default class extends Component {
-	state = { data:{}, kids:[] }
+	state = { data:{}, kids:[], loading:true }
 
-	setData = obj => this.setState({
-		data: obj || {},
-		kids: obj.kids || []
-	})
+	setData = data => {
+		this.setState({ data });
+		getComments(data.kids).then(kids => this.setState({ kids, loading:false }));
+	}
 
 	getData(id) {
 		getItem(id || this.props.id).then(this.setData);
@@ -20,17 +20,18 @@ export default class extends Component {
 		(data === void 0) ? this.getData() : this.setData(data);
 	}
 
-	componentWillUpdate(props) {
-		if (this.props.id !== props.id) {
-			console.log('ITEM--> UPDATED THE PROPS.ID');
-			// getPage(type, page).then(this.setData);
-		}
+	shouldComponentUpdate(_, state) {
+		const now = this.state;
+		return state.loading !== now.loading || state.data.id !== now.data.id || state.kids.length !== now.kids.length;
 	}
 
-	render(props, state) {
+	render(_, state) {
+		const d = state.data;
+		const len = d.descendants;
+
 		return (
 			<div className="page--item">
-				<Item data={ state.data } />
+				<Item data={ d } />
 			</div>
 		);
 	}
