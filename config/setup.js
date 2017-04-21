@@ -5,6 +5,7 @@ const SWPrecache = require('sw-precache-webpack-plugin');
 const Clean = require('clean-webpack-plugin');
 const Copy = require('copy-webpack-plugin');
 const HTML = require('html-webpack-plugin');
+const OfflineHTML = require('./sw-html');
 
 const uglify = require('./uglify');
 const babel = require('./babel');
@@ -15,6 +16,11 @@ module.exports = isProd => {
 	// base plugins array
 	const plugins = [
 		new Clean(['dist'], { root }),
+		new OfflineHTML(),
+		new HTML({
+			filename: '../view.html',
+			template: 'src/index.html'
+		}),
 		new Copy([
 			{ context: 'src/static/', from: '**/*.*' },
 			{ context: 'src/server/', from: '**/*', to: '../' }
@@ -23,7 +29,6 @@ module.exports = isProd => {
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(isProd ? 'production' : 'development')
 		}),
-		new HTML({ template: 'src/index.html' }),
 		new webpack.LoaderOptionsPlugin({
 			options: {
 				babel,

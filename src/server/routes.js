@@ -9,10 +9,10 @@ const TITLE = 'Hacker News';
 const maxAge = 1000 * 60 * 60; // 1 hour
 const types = ['top', 'new', 'ask', 'show', 'job'];
 
-const pubDir = join(__dirname, 'static');
-const template = readFileSync(`${pubDir}/index.html`, 'utf8');
-const contentRgx = new RegExp('{{__content__}}', 'g');
-const titleRgx = new RegExp('{{__title__}}', 'g');
+const view = join(__dirname, 'view.html');
+const template = readFileSync(view, 'utf8');
+const titlesRgx = new RegExp('__title__', 'g');
+const contentRgx = new RegExp('__content__', 'g');
 
 // Prepare caches
 const lists = new LRU({ maxAge });
@@ -21,7 +21,7 @@ const items = new LRU({ maxAge, max: PER * types.length });
 
 // Overly simple response handlers
 const send = (res, data) => data ? res.json({ data }) : res.status(404).json({ error: 'Not found!' });
-const sendPage = (res, title, content) => res.send(template.replace(titleRgx, title).replace(contentRgx, JSON.stringify(content && content)));
+const sendPage = (res, title, content) => res.send(template.replace(titlesRgx, title).replace(contentRgx, JSON.stringify(content && content)));
 
 const getChild = async key => await DB.child(key).once('value').then(s => s.val());
 
