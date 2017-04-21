@@ -1,11 +1,11 @@
 {
-  "name": "Preact Starter",
-  "short_name": "Preact",
-  "start_url": "/?homescreen=1",
-  "display": "standalone",
+  "name": "Hacker News",
+  "short_name": "Hacker News",
+  "start_url": "/",
+  "display": "fullscreen",
   "orientation": "portrait",
   "background_color": "#F2F2F2",
-  "theme_color": "#673AB8",
+  "theme_color": "#EF6C00",
   "icons": [{
     "src": "icon/android-chrome-192x192.png",
     "type": "image/png",
