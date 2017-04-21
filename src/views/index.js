@@ -6,16 +6,14 @@ import * as pages from './pages';
 const getType = () => location.pathname.split('/')[1];
 
 export default class App extends Component {
-	state = { type:getType(), percent:0 }
+	state = { type:getType() }
 
 	onRoute = obj => {
 		(obj.url === '/') ? route('/top') : this.setState({ type:getType() });
-		// window.ga && ga('send', 'pageview', url);
 	}
 
 	shouldComponentUpdate(_, state) {
-		const now = this.state;
-		return now.type !== state.type || now.percent !== state.percent;
+		return this.state.type !== state.type;
 	}
 
 	render(_, state) {
