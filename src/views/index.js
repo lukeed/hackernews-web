@@ -1,5 +1,5 @@
 import { h, Component } from 'preact'
-import { Router } from 'preact-router';
+import { Router, route } from 'preact-router';
 import Header from './tags/header';
 import * as pages from './pages';
 
@@ -8,9 +8,9 @@ const getType = () => location.pathname.split('/')[1];
 export default class App extends Component {
 	state = { type:getType(), percent:0 }
 
-	onRoute = ({ url }) => {
+	onRoute = obj => {
+		(obj.url === '/') ? route('/top') : this.setState({ type:getType() });
 		// window.ga && ga('send', 'pageview', url);
-		this.setState({ type:getType() });
 	}
 
 	shouldComponentUpdate(_, state) {
