@@ -6,12 +6,12 @@ class OfflineHTML {
 	// constructor(opts) {}
 	apply(compiler) {
 		const titleRgx = new RegExp('__title__', 'g');
-		const contentRgx = new RegExp('__content__', 'g');
+		const contentRgx = new RegExp(' = __content__', 'g');
 		const scriptTypeRgx = new RegExp('type="text/javascript" ', 'g');
 
 		compiler.plugin('compilation', webpack => {
 			webpack.plugin('html-webpack-plugin-after-html-processing', (plugin, cb) => {
-				const data = plugin.html.replace(contentRgx, 'void 0').replace(titleRgx, 'Hacker News').replace(scriptTypeRgx, '');
+				const data = plugin.html.replace(contentRgx, '').replace(titleRgx, 'Hacker News').replace(scriptTypeRgx, '');
 				webpack.assets['index.html'] = {
 					size: () => data.length,
 					source: () => data,
