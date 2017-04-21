@@ -9,7 +9,7 @@ export default class App extends Component {
 	state = { type:getType(), percent:0 }
 
 	onRoute = ({ url }) => {
-		window.ga && ga('send', 'pageview', url);
+		// window.ga && ga('send', 'pageview', url);
 		this.setState({ type:getType() });
 	}
 
