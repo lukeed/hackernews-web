@@ -1,7 +1,5 @@
 import { h, Component } from 'preact'
 import { Router } from 'preact-router';
-// import Progress from 'preact-progress';
-import Offline from './tags/offline';
 import Header from './tags/header';
 import * as pages from './pages';
 
@@ -32,12 +30,7 @@ export default class App extends Component {
 						<pages.error default />
 					</Router>
 				</main>
-				<Offline />
 			</div>
 		);
-		// <Progress id="loader"
-			// value={ state.percent } height="2px" color="#fff"
-			// onChange={ loadChange } onComplete={ loadComplete }
-		// />
 	}
 }
