@@ -1,0 +1,47 @@
+/**
+ * Offline Toast
+ */
+
+$toast-height: 3 * $base-spacing
+$toast-padding: 3 * $base-unit
+
+.toast
+	position: fixed
+	bottom: 0
+	right: 0
+	left: 0
+	color: $white
+	@extend %dflex
+	@extend %acenter
+	background: $black
+	pointer-events: none
+	height: $toast-height
+	will-change: transform
+	padding: 0 $toast-padding
+	transform: translateY(100%)
+
+	&, button
+		transition: all $base-timing cubic-bezier(.4,0,1,1)
+
+	&.show
+		pointer-events: auto
+		transform: translate(0)
+		transition-timing-function: cubic-bezier(0,0,.2,1)
+
+	button
+		color: $orange
+		font-weight: 700
+		position: absolute
+		font-size: 0.8 * $font-size
+		text-transform: uppercase
+		padding: 0 $base-spacing
+		// letter-spacing: 0.4px
+		right: $base-unit
+		bottom: $base-unit / (6 - 4.5) // 48-36 / 2
+		top: $base-unit / (6 - 4.5) // 48-36 / 2
+		background: rgba(black, 0)
+		outline: none
+		border: none
+		&:focus, &:active
+			background: rgba(black, 0.4)
+			transition-duration: 85ms
