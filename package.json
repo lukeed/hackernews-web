@@ -22,6 +22,7 @@
     "lru-cache": "^4.0.2",
     "md-colors": "^1.0.0",
     "md-shadows": "^1.0.0",
+    "obj-str": "^1.0.0",
     "preact": "^8.1.0",
     "preact-progress": "^1.0.0",
     "preact-router": "^2.4.1",

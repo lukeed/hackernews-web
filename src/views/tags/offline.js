@@ -1,3 +1,4 @@
+import cx from 'obj-str';
 import { h, Component } from 'preact';
 
 // @TODO watch `nav.onLine` changes
@@ -19,7 +20,7 @@ export default class Offline extends Component {
 
 	render(_, { show, online }) {
 		return online ? '' : (
-			<div className={{ toast:true, show }}>
+			<div className={ cx({ toast:true, show }) }>
 				No connection <button onClick={ this.check }>Retry</button>
 			</div>
 		);
