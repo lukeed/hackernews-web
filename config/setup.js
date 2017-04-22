@@ -25,7 +25,6 @@ module.exports = isProd => {
 			{ context: 'src/static/', from: '**/*.*' },
 			{ context: 'src/server/', from: '**/*', to: '../' }
 		]),
-		new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(isProd ? 'production' : 'development')
 		}),

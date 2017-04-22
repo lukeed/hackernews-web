@@ -12,10 +12,7 @@ module.exports = env => {
 
 	return {
 		entry: {
-			app: './src/index.js',
-			// vendor: [
-				// pull these to a `vendor.js` file
-			// ]
+			app: './src/index.js'
 		},
 		output: {
 			publicPath,
