@@ -3,7 +3,6 @@ const compression = require('compression');
 const favicon = require('serve-favicon');
 const express = require('express');
 
-const maxAge = 31536000; // 1yr
 const PORT = process.env.PORT || 3000;
 const pubDir = join(__dirname, 'static');
 
@@ -11,8 +10,8 @@ express()
 	.disable('x-powered-by')
 	.use(compression({ threshold: 0 }))
 	.use(favicon(`${pubDir}/favicon.ico`))
-	.use('/static', express.static(pubDir, { maxAge }))
-	.use('/sw.js', express.static(`${pubDir}/sw.js`, { setHeaders }))
+	.use('/static', express.static(pubDir, { setHeaders }))
+	.use('/sw.js', express.static(`${pubDir}/sw.js`, { setHeaders:noCache }))
 	.use(require('./routes'))
 	.listen(PORT, err => {
 		if (err) throw err
@@ -20,6 +19,10 @@ express()
 	});
 
 // for service-worker: don't cache!
-function setHeaders(res) {
+function noCache(res) {
 	res.setHeader('Cache-Control', 'private, no-cache');
+}
+
+function setHeaders(res) {
+	res.setHeader('Cache-Control', 'public,max-age=31536000,immutable');
 }
