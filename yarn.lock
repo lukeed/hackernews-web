@@ -1970,7 +1970,7 @@ extglob@^0.3.1:
   dependencies:
     is-extglob "^1.0.0"
 
-extract-text-webpack-plugin@beta:
+extract-text-webpack-plugin@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-2.1.0.tgz#69315b885f876dbf96d3819f6a9f1cca7aebf159"
   dependencies:
@@ -3855,9 +3855,9 @@ preact-scroll-header@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/preact-scroll-header/-/preact-scroll-header-1.0.1.tgz#ce67ad20cacaaf33a84019444699dc3870b1b45f"
 
-preact@^7.2.0:
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/preact/-/preact-7.2.1.tgz#159e1892f614985e49eb0a96fd6e6d8bdf8bbcc5"
+preact@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-8.1.0.tgz#f035b808eebb74e46d56246b02ca0f190b6d6574"
 
 prepend-http@^1.0.0, prepend-http@^1.0.1:
   version "1.0.4"
