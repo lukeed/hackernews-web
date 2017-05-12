@@ -17,7 +17,7 @@
   "dependencies": {
     "compression": "^1.6.2",
     "express": "^4.15.2",
-    "firebase": "^3.7.4",
+    "firebase": "^3.9.0",
     "forever": "^0.15.3",
     "lru-cache": "^4.0.2",
     "md-colors": "^1.0.0",

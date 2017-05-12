@@ -2058,9 +2058,9 @@ find-up@^1.0.0:
     path-exists "^2.0.0"
     pinkie-promise "^2.0.0"
 
-firebase@^3.7.4:
-  version "3.8.0"
-  resolved "https://registry.yarnpkg.com/firebase/-/firebase-3.8.0.tgz#068e680aa82b05fa53fc13cb082f3bffac49d190"
+firebase@^3.9.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/firebase/-/firebase-3.9.0.tgz#c4237f50f58eeb25081b1839d6cbf175f8f7ed9b"
   dependencies:
     dom-storage "^2.0.2"
     faye-websocket "0.9.3"
